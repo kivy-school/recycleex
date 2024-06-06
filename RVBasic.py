@@ -28,32 +28,25 @@ Builder.load_string('''
         multiselect: True
         touch_multiselect: True
 ''')
-
-
 class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
                                  RecycleBoxLayout):
     ''' Adds selection and focus behavior to the view. '''
-
-
 class SelectableLabel(RecycleDataViewBehavior, Label):
     ''' Add selection support to the Label '''
     index = None
     selected = BooleanProperty(False)
     selectable = BooleanProperty(True)
-
     def refresh_view_attrs(self, rv, index, data):
         ''' Catch and handle the view changes '''
         self.index = index
         return super(SelectableLabel, self).refresh_view_attrs(
             rv, index, data)
-
     def on_touch_down(self, touch):
         ''' Add selection on touch down '''
         if super(SelectableLabel, self).on_touch_down(touch):
             return True
         if self.collide_point(*touch.pos) and self.selectable:
             return self.parent.select_with_touch(self.index, touch)
-
     def apply_selection(self, rv, index, is_selected):
         ''' Respond to the selection of items in the view. '''
         self.selected = is_selected
@@ -61,18 +54,17 @@ class SelectableLabel(RecycleDataViewBehavior, Label):
             print("selection changed to {0}".format(rv.data[index]))
         else:
             print("selection removed for {0}".format(rv.data[index]))
-
-
 class RV(RecycleView):
     def __init__(self, **kwargs):
         super(RV, self).__init__(**kwargs)
-        self.data = [{'text': str(x)} for x in range(100000)]
-
-
+        self.data = [{'text': str(x)} for x in range(100)]
+        # print("who is self?", self, self.data, self.__name__, dir(self)) #self.__name__ DNE
+        # print("who is self?", self.__class__.__name__) #self.__name__ DNE
+        # import pdb
+        # pdb.set_trace()
 class TestApp(App):
     def build(self):
         return RV()
-
 if __name__ == '__main__':
     from kivy.core.window import Window
     #this is to make the Kivy window always on top
