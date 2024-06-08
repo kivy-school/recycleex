@@ -6,6 +6,7 @@ from kivy.properties import StringProperty, ListProperty
 
 
 kv = '''
+#:import pdb pdb
 <TwoButtons>:
 # This class is used as the viewclass in the RecycleView
 # The means this widget will be instanced to view one element of data from the data list.
@@ -14,6 +15,7 @@ kv = '''
     Button:
         text: root.left_text
         on_release: print(f'Button {self.text} pressed') 
+        on_press: pdb.set_trace()
     Button:
         text: root.right_text
         on_release: print(f'Button {self.text} pressed')

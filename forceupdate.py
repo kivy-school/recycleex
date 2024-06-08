@@ -36,4 +36,7 @@ class Test(App):
         self.data = [{"text": "Label "+str(x), 'owner': self} for x in range(20)]
         return Builder.load_string(KV)
 
+from kivy.core.window import Window
+#this is to make the Kivy window always on top
+Window.always_on_top = True
 Test().run()
