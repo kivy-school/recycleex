@@ -62,6 +62,8 @@ class RV(RecycleView):
     def add(self):
         l = len(self.rv_data_list)
         self.rv_data_list.extend([{'left_text': f'Added Left {i}', 'right_text': f'Added Right {i}'} for i in range(l,l+1)])
+        # import pdb
+        # pdb.set_trace()
 
 
 class RVTwoApp(App):
