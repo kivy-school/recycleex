@@ -1,4 +1,7 @@
 # recycleex
+
+[![Watch the video](https://img.youtube.com/vi/Xwmf5WSH-Ao/maxresdefault.jpg)](https://www.youtube.com/embed/Xwmf5WSH-Ao)
+
 - [x] Recycleview VS Scrollview example and explanation
 - [x] kivy recycleview tutorial DEEP DIVE for beginners: recycleview vs scrollview, examples, and analysis
 - [x] github repo: https://github.com/kivy-school/recycleex
