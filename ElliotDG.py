@@ -15,11 +15,13 @@ kv = '''
     Button:
         text: root.left_text
         on_release: print(f'Button {self.text} pressed') 
-        on_press: pdb.set_trace()
+        # on_press: pdb.set_trace()
+        # on_press: self.parent.parent.parent.data = [{'left_text': 'A 0', 'right_text': 'Right 0'}, {'left_text': 'A 1', 'right_text': 'Right 1'}]
     Button:
         text: root.right_text
         on_release: print(f'Button {self.text} pressed')
  
+
 BoxLayout:
     orientation: 'vertical'
     Button:
@@ -53,6 +55,10 @@ class RV(RecycleView):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.rv_data_list = [{'left_text': f'Left {i}', 'right_text': f'Right {i}'} for i in range(2)]
+        # [
+        #     {'left_text': 'Left 0', 'right_text': 'Right 0'},
+        #     {'left_text': 'Left 1', 'right_text': 'Right 1'},
+        # ]
         # This list comprehension is used to create the data list for this simple example.
         # The data created looks like:
         # [{'left_text': 'Left 0', 'right_text': 'Right 0'}, {'left_text': 'Left 1', 'right_text': 'Right 1'},

@@ -52,8 +52,8 @@ class SelectableLabel(RecycleDataViewBehavior, Label):
         self.selected = is_selected
         if is_selected:
             print("selection changed to {0}".format(rv.data[index]))
-            import pdb
-            pdb.set_trace()
+            # import pdb
+            # pdb.set_trace()
         else:
             print("selection removed for {0}".format(rv.data[index]))
 class RV(RecycleView):

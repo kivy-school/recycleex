@@ -30,6 +30,7 @@ Builder.load_string('''
         font_name: 'seguiemj'
         size_hint: (1,1)
         font_size: dp(self.height)*.75
+        
     Label:
         id: employee_number_labelID
         text: "default number"
@@ -56,7 +57,7 @@ class SelectableBoxLayout(RecycleKVIDsDataViewBehavior, BoxLayout):
     index = None
     selected = BooleanProperty(False)
     selectable = BooleanProperty(True)
-
+    
     def refresh_view_attrs(self, rv, index, data):
         ''' Catch and handle the view changes '''
         self.index = index
@@ -70,10 +71,11 @@ class SelectableBoxLayout(RecycleKVIDsDataViewBehavior, BoxLayout):
             return True
         if self.collide_point(*touch.pos) and self.selectable:
             return self.parent.select_with_touch(self.index, touch)        
-        # self.parent.parent.refresh_from_data()
+        self.parent.parent.refresh_from_data()
         
     def on_touch_up(self, touch): #touch is laggy because touch up takes a while
-        self.parent.parent.refresh_from_data()
+        # self.parent.parent.refresh_from_data()
+        pass
         
     def apply_selection(self, rv, index, is_selected):
         ''' Respond to the selection of items in the view. '''
@@ -81,11 +83,13 @@ class SelectableBoxLayout(RecycleKVIDsDataViewBehavior, BoxLayout):
         if is_selected:
             App.get_running_app().root.data[index]['employee_name_labelID.text'] = "Employee: \N{grinning face}"
             print("selection changed to {0}".format(rv.rvdata[index]))
+            # App.get_running_app().root.data[index]['employee_name_labelID.color'] = (170,170,170)
+            # App.get_running_app().root.data[index]['employee_name_labelID.color'] = (255,0,0)
         else:
             App.get_running_app().root.data[index]['employee_name_labelID.text'] = "Employee: \N{pensive face}"
             print("selection removed for {0}".format(rv.rvdata[index]))
         # this will bug it out, don't always refresh
-        # print("new rv data", rv.rvdata)
+        print("new rv data", rv.rvdata)
         # rv.refresh_from_data()
         
 class RV(RecycleView):
